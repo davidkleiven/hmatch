@@ -16,11 +16,24 @@ func TestRead(t *testing.T) {
 		t.Errorf("Received error %v", err)
 	}
 
-	if len(result) != 1 {
-		t.Errorf("Expected 1 chunk result. Got %d", len(result))
+	if len(result.Left) != 128 {
+		t.Errorf("Expected length to be 256 got %d", len(result.Left))
 	}
 
-	if len(result[0].Left) != 128 {
-		t.Errorf("Expected length to be 256 got %d", len(result[0].Left))
+	if result.SampleRate != 44100.0 {
+		t.Errorf("Expected sample rate 44100 Hz got %f", result.SampleRate)
+	}
+}
+
+func TestReadWrongFormat(t *testing.T) {
+	riffDataReader := pkg_test_utils.NewFailingMockRiffReader()
+	result, err := pkg.Read(riffDataReader)
+
+	if err == nil {
+		t.Errorf("Should have failed")
+	}
+
+	if len(result.Left) != 0 || len(result.Right) != 0 {
+		t.Errorf("Should have no data")
 	}
 }

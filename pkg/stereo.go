@@ -1,8 +1,9 @@
 package pkg
 
 type StereoData struct {
-	Left  []float64
-	Right []float64
+	Left       []float64
+	Right      []float64
+	SampleRate float64
 }
 
 func NewStereoChannels(size int) StereoData {
@@ -12,7 +13,7 @@ func NewStereoChannels(size int) StereoData {
 	}
 }
 
-func (s *StereoData) mean() []float64 {
+func (s *StereoData) Mean() []float64 {
 	result := make([]float64, len(s.Left))
 
 	for i := range s.Left {

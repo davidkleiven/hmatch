@@ -1,0 +1,15 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/segmentio/golines.git
+    rev: v0.12.2
+    hooks:
+      - id: golines
+        entry: golines . -w -m 120
+        types: [go]
+        language: golang
+        pass_filenames: false

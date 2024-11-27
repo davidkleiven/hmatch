@@ -3,8 +3,11 @@ updates:
 - package-ecosystem: gomod
   directory: "/"
   schedule:
-    interval: daily
-    time: "13:00"
+    interval: weekly
   commit-message:
       prefix: "MAINT: "
   open-pull-requests-limit: 10
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    interval: "weekly"

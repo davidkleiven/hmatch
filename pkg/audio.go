@@ -2,15 +2,22 @@ package pkg
 
 import (
 	"io"
+	"os"
 
 	"github.com/youpy/go-riff"
 	"github.com/youpy/go-wav"
 )
 
-func Read(reader riff.RIFFReader) ([]StereoData, error) {
+func Read(reader riff.RIFFReader) (StereoData, error) {
 	wavReader := wav.NewReader(reader)
+	format, err := wavReader.Format()
 
-	result := []StereoData{}
+	if err != nil {
+		return StereoData{}, err
+	}
+
+	result := StereoData{}
+	result.SampleRate = float64(format.SampleRate)
 	for {
 		samples, err := wavReader.ReadSamples()
 
@@ -19,16 +26,28 @@ func Read(reader riff.RIFFReader) ([]StereoData, error) {
 		}
 
 		if err != nil {
-			return result, err
+			return StereoData{}, err
 		}
 
-		current := NewStereoChannels(len(samples))
+		newLeft := make([]float64, len(samples))
+		newRight := make([]float64, len(samples))
 
 		for i, value := range samples {
-			current.Left[i] = float64(wavReader.IntValue(value, 0))
-			current.Right[i] = float64(wavReader.IntValue(value, 1))
+			newLeft[i] = float64(wavReader.IntValue(value, 0))
+			newRight[i] = float64(wavReader.IntValue(value, 1))
 		}
-		result = append(result, current)
+		result.Left = append(result.Left, newLeft...)
+		result.Right = append(result.Right, newRight...)
 	}
 	return result, nil
+}
+
+func ReadFromFile(fname string) (StereoData, error) {
+	file, err := os.Open(fname)
+
+	if err != nil {
+		return StereoData{}, err
+	}
+	defer file.Close()
+	return Read(file)
 }
