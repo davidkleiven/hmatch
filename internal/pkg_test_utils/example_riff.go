@@ -77,3 +77,9 @@ func NewMockRiffReader() MockRiffReader {
 		data: exampleRiffData(),
 	}
 }
+
+func NewFailingMockRiffReader() MockRiffReader {
+	return MockRiffReader{
+		data: []byte("Not a riff file"),
+	}
+}

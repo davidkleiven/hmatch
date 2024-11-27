@@ -12,7 +12,7 @@ func TestMean(t *testing.T) {
 
 	expect := []float64{1.5, 2.5, 3.5}
 
-	result := data.mean()
+	result := data.Mean()
 
 	for i := range expect {
 		if (expect[i] - result[i]) > 1e-6 {
