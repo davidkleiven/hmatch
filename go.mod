@@ -3,7 +3,7 @@ module github.com/davidkleiven/hmatch
 go 1.23.3
 
 require (
-	github.com/davidkleiven/gosfft v1.0.6
+	github.com/davidkleiven/gosfft v1.0.7
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/pflag v1.0.5
 	github.com/youpy/go-riff v0.1.0
