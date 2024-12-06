@@ -7,7 +7,7 @@ import (
 
 func TestGroupBy(t *testing.T) {
 	intergers := []int{1, 2, 3, 4, 5}
-	evenAndOddNumbers := Groupby(intergers, func(n int) int {
+	evenAndOddNumbers := groupby(intergers, func(n int) int {
 		return n % 2
 	})
 
