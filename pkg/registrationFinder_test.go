@@ -1,24 +1,22 @@
-package pkg_test
+package pkg
 
 import (
 	"slices"
 	"strings"
 	"testing"
-
-	"github.com/davidkleiven/hmatch/pkg"
 )
 
 func TestFormatDrawbarPositions(t *testing.T) {
 	positions := []int{0, 0, 8, 1, 2, 3, 2, 4, 5}
 
 	expect := "00 8123 245"
-	if result := pkg.FormatDrawbarPositions(positions); result != "00 8123 245" {
+	if result := FormatDrawbarPositions(positions); result != "00 8123 245" {
 		t.Errorf("Got %s wanted %s", result, expect)
 	}
 }
 
 func TestPeakToString(t *testing.T) {
-	peaks := []pkg.Peak{
+	peaks := []Peak{
 		{
 			Identifier: 0,
 			Value:      10.0,
@@ -26,7 +24,7 @@ func TestPeakToString(t *testing.T) {
 		},
 	}
 
-	result := pkg.PeakToString(peaks)
+	result := PeakToString(peaks)
 
 	if !strings.Contains(result, "200.00 Hz") {
 		t.Errorf("Expected 200.00 Hz to be part of %s", result)
@@ -34,7 +32,7 @@ func TestPeakToString(t *testing.T) {
 }
 
 func TestRegistarationFinder(t *testing.T) {
-	peaks := []pkg.Peak{
+	peaks := []Peak{
 		{
 			Identifier: 0,
 			Value:      1e6,
@@ -46,7 +44,7 @@ func TestRegistarationFinder(t *testing.T) {
 			Frequency:  20.0,
 		},
 	}
-	result := pkg.FindRegistration(peaks, 2)
+	result := FindRegistration(peaks, 2)
 	expectPositions := []int{0, 0, 8, 5, 0, 0, 0, 0, 0}
 
 	if !slices.Equal(result.Positions, expectPositions) {

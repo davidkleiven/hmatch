@@ -1,11 +1,9 @@
-package pkg_test
+package pkg
 
 import (
 	"math"
 	"slices"
 	"testing"
-
-	"github.com/davidkleiven/hmatch/pkg"
 )
 
 func TestPeakDetection(t *testing.T) {
@@ -15,9 +13,9 @@ func TestPeakDetection(t *testing.T) {
 		data[i] = math.Sin(12.0 * math.Pi * float64(i) / 128.0)
 	}
 
-	peaks := pkg.DetectSpectrumPeaks(data, 1.0, 1024)
+	peaks := DetectSpectrumPeaks(data, 1.0, 1024)
 
-	significantPeaks := slices.DeleteFunc(peaks, func(peak pkg.Peak) bool { return peak.Value < 1.0 })
+	significantPeaks := slices.DeleteFunc(peaks, func(peak Peak) bool { return peak.Value < 1.0 })
 	if len(significantPeaks) != 1 {
 		t.Errorf("Perfect sinusoidal signal should only have one peak")
 	}
