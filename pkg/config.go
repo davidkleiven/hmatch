@@ -13,14 +13,6 @@ func DrawbarFeets() []float64 {
 	}
 }
 
-type Fundamental int
-
-const (
-	Sixteen Fundamental = 0
-	Eight               = 2
-	Four                = 3
-)
-
 func drawbarFrequencies(fundamentalFrequency float64, fundamentalDrawbar int) []float64 {
 	feets := DrawbarFeets()
 	frequencies := make([]float64, len(feets))

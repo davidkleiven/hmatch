@@ -20,7 +20,7 @@ type PeakAssignment struct {
 }
 
 func onlyKeepClosestDrawbarAssignmentPerPeak(assignments []PeakAssignment) []PeakAssignment {
-	assignmentPerPeak := Groupby(assignments, func(a PeakAssignment) int { return a.peak.Identifier })
+	assignmentPerPeak := groupby(assignments, func(a PeakAssignment) int { return a.peak.Identifier })
 	result := []PeakAssignment{}
 
 	for _, a := range assignmentPerPeak {

@@ -1,6 +1,6 @@
 package pkg
 
-func Groupby[K comparable, E any](s []E, keyFunc func(E) K) map[K][]E {
+func groupby[K comparable, E any](s []E, keyFunc func(E) K) map[K][]E {
 	result := make(map[K][]E)
 
 	for _, v := range s {
