@@ -1,15 +1,13 @@
-package pkg_test
+package pkg
 
 import (
 	"slices"
 	"testing"
-
-	"github.com/davidkleiven/hmatch/pkg"
 )
 
 func TestGroupBy(t *testing.T) {
 	intergers := []int{1, 2, 3, 4, 5}
-	evenAndOddNumbers := pkg.Groupby(intergers, func(n int) int {
+	evenAndOddNumbers := Groupby(intergers, func(n int) int {
 		return n % 2
 	})
 
