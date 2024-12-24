@@ -80,3 +80,29 @@ func TestParseDrawbarPositionInvalidDigits(t *testing.T) {
 		}
 	}
 }
+
+func TestParseDrawbarPositions(t *testing.T) {
+	input := "352000000,003421000"
+	result, err := ParseDrawbarPositions(input)
+
+	if err != nil {
+		t.Errorf("Unexpected error %s\n", err)
+	}
+
+	want := []DrawbarSetting{
+		{3, 5, 2, 0, 0, 0, 0, 0, 0},
+		{0, 0, 3, 4, 2, 1, 0, 0, 0},
+	}
+
+	if len(result) != len(want) {
+		t.Errorf("Wanted %d got %d\n", len(want), len(result))
+	}
+
+	for i := range want {
+		if slices.Compare(result[i][:], want[i][:]) != 0 {
+			t.Errorf("Wanted\n%v\ngot\n%v\n", want, result)
+			break
+		}
+	}
+
+}
