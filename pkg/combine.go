@@ -78,9 +78,8 @@ func ParseDrawbarPositions(positions string) ([]DrawbarSetting, error) {
 			}
 
 			result[i] = digit
-
-			settings = append(settings, result)
 		}
+		settings = append(settings, result)
 	}
 
 	return settings, nil

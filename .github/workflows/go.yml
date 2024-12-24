@@ -31,3 +31,4 @@ jobs:
       run: |
         go run main.go fit -h
         go run main.go fit samples/sample.wav
+        go run main.go combine 352000000,003421000
