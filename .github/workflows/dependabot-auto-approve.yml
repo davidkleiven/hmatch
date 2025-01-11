@@ -3,7 +3,7 @@ on: pull_request
 
 jobs:
   auto-approve:
-    permission:
+    permissions:
       contents: write
       pull-requests: write
     uses:  davidkleiven/gh-workflows/.github/workflows/dependabot-auto-approve.yml@main
