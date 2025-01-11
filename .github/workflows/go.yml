@@ -32,3 +32,5 @@ jobs:
         go run main.go fit -h
         go run main.go fit samples/sample.wav
         go run main.go combine 352000000,003421000
+        go run main.go reg
+        go run main.go reg diap
