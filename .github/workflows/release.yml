@@ -1,0 +1,11 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    uses:  davidkleiven/gh-workflows/.github/workflows/semantic-gh-release.yml@main
+    secrets: inherit
