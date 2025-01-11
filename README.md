@@ -26,3 +26,5 @@ go install github.com/davidkleiven/hmatch@latest
 ## Acknowledgements
 
 The program was written after reading the article [The Science of Hammond Organ Drawbar Registration](http://www.stefanv.com/electronics/hammond_drawbar_science.html) by Stefan Vorkoetter.
+
+The standard registatrations available through the `hmatch reg` command are found at [b3world.com](https://b3world.com/hammond-drawbar-settings.html)
