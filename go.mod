@@ -5,7 +5,7 @@ go 1.23.3
 require (
 	github.com/davidkleiven/gosfft v1.0.7
 	github.com/spf13/cobra v1.9.1
-	github.com/spf13/pflag v1.0.7
+	github.com/spf13/pflag v1.0.9
 	github.com/youpy/go-riff v0.1.0
 	github.com/youpy/go-wav v0.3.2
 	gonum.org/v1/gonum v0.16.0
